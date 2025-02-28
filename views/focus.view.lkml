@@ -130,20 +130,20 @@ view: focus {
           ) THEN 'Database'
 
           WHEN ${service_name} IN (
-            'Cloud Functions', 'Cloud Run', 'Cloud Run Functions', 'Cloud Tasks', 'Cloud Scheduler'
+            'Cloud Functions', 'Cloud Run', 'Cloud Run Functions', 'App Engine'
           ) THEN 'Serverless'
 
           WHEN ${service_name} IN (
             'Vertex AI', 'Vertex AI Search', 'Duet AI', 'Generative AI App Builder - Enterprise Search',
-            'Cloud Natural Language'
+            'Cloud Natural Language', 'Deep Learning VM', 'Translate', 'Custom Search'
           ) THEN 'AI & Machine Learning'
 
           WHEN ${service_name} IN (
-            'Cloud DNS', 'Cloud Load Balancing', 'Networking'
+            'Cloud DNS', 'Cloud Load Balancing', 'Networking', 'Cloud Domains'
           ) THEN 'Networking'
 
           WHEN ${service_name} IN (
-            'Compute Engine', 'Anthos / GDC-V', 'Anthos Service Mesh', 'GKE Enterprise / GDC'
+            'Compute Engine', 'Anthos / GDC-V', 'Anthos Service Mesh', 'GKE Enterprise / GDC', 'Kubernetes Engine'
           ) THEN 'Infrastructure and Orchestration'
 
           WHEN ${service_name} IN (
@@ -158,15 +158,15 @@ view: focus {
           ) THEN 'Data Integration & Processing'
 
           WHEN ${service_name} IN (
-            'API Gateway', 'Cloud Dialogflow API', 'Cloud Pub/Sub', 'Cloud Memorystore for Redis', 'Apigee', 'Cloud Vision API', 'Cloud Speech API', 'Cloud Text-to-Speech API', 'Retail API', 'Distance Matrix API', 'Geocoding API', 'Places API'
+            'API Gateway', 'Cloud Dialogflow API', 'Cloud Pub/Sub', 'Cloud Memorystore for Redis', 'Apigee', 'Cloud Vision API', 'Cloud Speech API', 'Cloud Text-to-Speech API', 'Retail API', 'Distance Matrix API', 'Geocoding API', 'Places API', 'BigQuery Reservation API', 'BigQuery Storage API', 'Application Integration', 'Cloud Document AI API', 'Gemini API'
           ) THEN 'API & Microservices'
 
           WHEN ${service_name} IN (
-            'Artifact Registry', 'Backup and DR Service', 'Backup for GKE', 'Container Registry Vulnerability Scanning', 'Cloud Storage'
+            'Artifact Registry', 'Backup and DR Service', 'Backup for GKE', 'Container Registry Vulnerability Scanning', 'Cloud Storage', 'NetApp Volumes'
           ) THEN 'Storage & Backup'
 
           WHEN ${service_name} IN (
-            'Cloud Build', 'Source Repository', 'Cloud Scheduler', 'Cloud Tasks'
+            'Cloud Build', 'Source Repository', 'Cloud Scheduler', 'Cloud Tasks', 'Data Catalog'
           ) THEN 'Developer Tools'
 
           WHEN ${service_name} IN (
