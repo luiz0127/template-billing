@@ -22,14 +22,17 @@ persist_with: template_billing_default_datagroup
 # To see the Explore you’re building, navigate to the Explore menu and select an Explore under "Template Billing"
 
 explore: focus {
-    # join: focus__tags {
-    #   view_label: "Focus: Tags"
-    #   sql: LEFT JOIN UNNEST(${focus.tags}) as focus__tags ;;
-    #   relationship: one_to_many
-    # }
-    # join: focus__x_credits {
-    #   view_label: "Focus: X Credits"
-    #   sql: LEFT JOIN UNNEST(${focus.x_credits}) as focus__x_credits ;;
-    #   relationship: one_to_many
-    # }
+    always_filter: {
+      filters: [focus.project_name: ""]
+    }
+    join: focus__tags {
+      view_label: "Focus: Tags"
+      sql: LEFT JOIN UNNEST(${focus.tags}) as focus__tags ;;
+      relationship: one_to_many
+    }
+    join: focus__x_credits {
+      view_label: "Focus: X Credits"
+      sql: LEFT JOIN UNNEST(${focus.x_credits}) as focus__x_credits ;;
+      relationship: many_to_one
+    }
 }
