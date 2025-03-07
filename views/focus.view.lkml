@@ -132,10 +132,6 @@ view: focus {
     type: count
     drill_fields: [service_name, commitment_discount_name]
   }
-  measure: sum_cost {
-    type: sum
-    sql: ${billed_cost} ;;
-  }
 }
 
 # The name of this view in Looker is "Focus Tags"
