@@ -76,6 +76,9 @@ view: focus {
   dimension: region_name {
     type: string
     sql: ${TABLE}.RegionName ;;
+    drill_fields: [
+      service_name
+    ]
   }
   dimension: service_name {
     type: string
