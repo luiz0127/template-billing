@@ -215,7 +215,12 @@ view: focus__tags {
 }
 
 view: focus__x_credits {
-  drill_fields: [id]
+  drill_fields: [
+    id,
+    type,
+    sum_credits_in_positive,
+    focus.service_name
+  ]
 
   dimension: id {
     primary_key: yes
@@ -246,6 +251,12 @@ view: focus__x_credits {
   measure: sum_credits {
     type: number
     sql: SUM(${amount}) ;;
+    value_format: "\"R$\" #,##0.00"
+  }
+  measure: sum_credits_in_positive {
+    hidden: yes
+    type: number
+    sql: SUM(${amount}) * -1 ;;
     value_format: "\"R$\" #,##0.00"
   }
 }
