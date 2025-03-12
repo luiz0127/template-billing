@@ -9,6 +9,10 @@ view: focus {
     type: number
     sql: ${TABLE}.BilledCost ;;
   }
+  dimension: cost {
+    type: number
+    sql: ${TABLE}.cost ;;
+  }
   dimension: billing_account_id {
     type: string
     sql: ${TABLE}.BillingAccountId ;;
@@ -73,6 +77,14 @@ view: focus {
     type: string
     sql: ${TABLE}.ProjectName ;;
   }
+  dimension: resource_name {
+    type: string
+    sql: CASE WHEN ${TABLE}.ResourceName IS NULL THEN 'No Name' ELSE ${TABLE}.ResourceName END ;;
+  }
+  dimension: customer_name {
+    type: string
+    sql: ${TABLE}.CustomerName ;;
+  }
   dimension: region_name {
     type: string
     sql: ${TABLE}.RegionName ;;
@@ -83,6 +95,9 @@ view: focus {
   dimension: service_name {
     type: string
     sql: ${TABLE}.ServiceName ;;
+    drill_fields: [
+      charge_description
+    ]
   }
   dimension: sku_id {
     type: string
@@ -170,7 +185,19 @@ view: focus {
       END
       ;;
     value_format: "\"R$\" #,##0.00"
-    drill_fields: [service_name, sum_cost]
+    drill_fields: [service_name, sum_billed_cost]
+  }
+
+  dimension: customer_name_board {
+    type: number
+    sql: ${customer_name} ;;
+    html:
+      <h2 style='
+        color: #035;
+        text-align: center;
+        margin: 10px
+      '>Welcome {{value}}<h2>
+    ;;
   }
 
 
@@ -178,10 +205,15 @@ view: focus {
     type: count
     drill_fields: [project_name, region_name, service_name, commitment_discount_name]
   }
-  measure: sum_cost {
+  measure: sum_billed_cost {
     type: sum
     sql: ${billed_cost} ;;
     value_format: "\"R$\" #,##0.00"
+  }
+  measure: sum_cost {
+    type: sum
+    sql: ${cost} ;;
+    value_format: "\"R$\" #,##0"
   }
 }
 
