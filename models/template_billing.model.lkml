@@ -33,3 +33,17 @@ explore: focus {
       relationship: many_to_one
     }
 }
+
+explore: focus_partner {
+  hidden: yes
+  join: focus_partner__tags {
+    view_label: "Focus Partner: Tags"
+    sql: LEFT JOIN UNNEST(${focus_partner.tags}) as focus_partner__tags ;;
+    relationship: one_to_many
+  }
+  join: focus_partner__x_credits {
+    view_label: "Focus Partner: X Credits"
+    sql: LEFT JOIN UNNEST(${focus_partner.x_credits}) as focus_partner__x_credits ;;
+    relationship: one_to_many
+  }
+}

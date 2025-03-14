@@ -213,7 +213,7 @@ view: focus {
   measure: sum_cost {
     type: sum
     sql: ${cost} ;;
-    value_format: "\"R$\" #,##0"
+    value_format: "\"R$\" #,##0.00"
   }
 }
 
